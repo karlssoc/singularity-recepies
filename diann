@@ -1,0 +1,22 @@
+Bootstrap: docker
+From: ubuntu:19.10
+
+%post
+    apt-get -y update
+    apt-get -y install git wget build-essential
+
+    cd /usr/local/bin
+    git clone https://github.com/vdemichev/DiaNN.git
+    cd DiaNN/mstoolkit 
+    make 
+    cd .. 
+    chmod +x linux-build-gcc-7 
+    ./linux-build-gcc-7
+
+
+%environment
+    export LC_ALL=C
+    export PATH=/usr/local/bin/DiaNN
+
+%runscript
+exec "$@"`
