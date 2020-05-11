@@ -1,5 +1,5 @@
 Bootstrap: docker
-From: ubuntu:19.10
+From: bitnami/minideb:latest
 
 %post
     apt-get -y update
