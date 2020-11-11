@@ -1,0 +1,13 @@
+Bootstrap: docker
+From: bitnami/minideb:latest
+
+%post
+    apt-get -y update
+    apt-get -y install libpwiz-tools
+
+
+%environment
+    export LC_ALL=C
+
+%runscript
+exec "$@"`
