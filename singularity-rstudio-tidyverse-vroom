@@ -1,5 +1,6 @@
 # from https://github.com/nickjer/singularity-rstudio
 # only added R vroom package. Requires sh files from nickjer to build
+# file R-4.0.3-rstudio-tidyverse.sif
 BootStrap: docker
 From: ubuntu:20.04
 
