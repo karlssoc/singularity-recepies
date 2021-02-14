@@ -1,0 +1,26 @@
+Bootstrap: docker
+From: bitnami/minideb:latest
+
+%post
+    apt-get -y update
+    apt-get -y install git wget build-essential
+
+    cd /usr/local/bin
+    git clone https://github.com/vdemichev/DiaNN.git
+    cd DiaNN
+    git checkout 1.7.11 
+    cd mstoolkit 
+    make 
+    cd .. 
+    chmod +x linux-build-gcc-7 
+    ./linux-build-gcc-7
+
+
+%environment
+    export LC_ALL=C
+    export PATH=/usr/local/bin/DiaNN
+
+%runscript
+exec "$@"`
+ 
+# DIA-NN 1.7.12 is unstable on linux
