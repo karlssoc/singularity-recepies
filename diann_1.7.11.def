@@ -6,9 +6,8 @@ From: bitnami/minideb:latest
     apt-get -y install git wget build-essential
 
     cd /usr/local/bin
-    git clone https://github.com/vdemichev/DiaNN.git
+    git clone --single-branch --branch 1.7.15 https://github.com/vdemichev/DiaNN.git
     cd DiaNN
-    git checkout 1.7.11 
     cd mstoolkit 
     make 
     cd .. 
