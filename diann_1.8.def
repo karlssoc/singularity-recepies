@@ -7,7 +7,12 @@ From: ubuntu:21.04
 
     wget https://github.com/vdemichev/DiaNN/releases/download/1.8/diann_1.8.deb
     
-    DEBIAN_FRONTEND=noninteractive && apt -y install ./diann_1.8.deb
+    apt -y install ./diann_1.8.deb
+    
+    rm ./diann_1.8.deb   
+    apt-get clean
+    rm -rf /var/lib/apt/lists/* 
+
 
 
 %environment
@@ -18,4 +23,5 @@ From: ubuntu:21.04
 exec "$@"`
  
 # libgomp1 requried 
+# debconf errors during install
 # exe: diann-1.8 in /usr/diann/1.8
