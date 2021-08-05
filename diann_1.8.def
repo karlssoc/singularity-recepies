@@ -24,4 +24,5 @@ exec "$@"
  
 # libgomp1 requried 
 # debconf errors during install
-# exe: diann-1.8 in /usr/diann/1.8
+# exec: diann-1.8 
+# Data Set: 20210804114931722-1195165
