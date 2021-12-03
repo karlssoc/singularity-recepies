@@ -20,3 +20,4 @@ From: x11vnc/desktop:20.04
 # running the sif starts x11vnc on port 5900
 # to remotely connect with a VNC client you will need to tunnel VNC through SSH: 
 # ie https://www.techrepublic.com/article/how-to-connect-to-vnc-using-ssh/ 
+# openbis PermID 20211203091902543-1200078. 
