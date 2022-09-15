@@ -1,0 +1,23 @@
+Bootstrap: docker
+From: ubuntu:22.04
+
+%post
+    apt-get -y update
+    apt-get -y install wget apt-utils libgomp1
+
+    wget https://github.com/vdemichev/DiaNN/releases/download/1.8.1/diann_1.8.1.deb
+
+    apt -y install ./diann_1.8.1.deb
+
+    rm ./diann_1.8.1.deb
+    apt-get clean
+    rm -rf /var/lib/apt/lists/*
+
+
+
+%environment
+    export LC_ALL=C
+    export PATH=/usr/diann/1.8.1
+
+%runscript
+exec "$@"
