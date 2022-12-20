@@ -1,0 +1,8 @@
+Bootstrap: docker
+From: mcr.microsoft.com/dotnet/sdk:3.1.426-focal
+
+
+# https://www.youtube.com/watch?v=KHdvO1M85VM
+
+# singularity exec -B /data/karlssoc /data/karlssoc/bin/sif/maxquant_donet3.1.sif dotnet /data/karlssoc/bin/MaxQuant_v2.2.0.0/bin/MaxQuantCmd.exe
+# ~/bin/mq.sh
