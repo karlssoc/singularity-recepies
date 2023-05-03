@@ -1,0 +1,23 @@
+Bootstrap: library
+From: ubuntu:20.04
+
+%post
+    export DEBIAN_FRONTEND=noninteractive
+    export TZ=Europe/Stockholm
+    apt-get -y update
+    apt-get -y install dirmngr gnupg apt-transport-https ca-certificates wget unzip zlib1g qtbase5-dev libgomp1 glibc-source default-jdk 
+    wget https://abibuilder.cs.uni-tuebingen.de/archive/openms/OpenMSInstaller/release/2.9.1/OpenMS-2.9.1-Debian-Linux-x86_64.deb
+    apt -y install ./OpenMS-2.9.1-Debian-Linux-x86_64.deb
+    rm OpenMS-2.9.1-Debian-Linux-x86_64.deb
+    apt-get clean
+    rm -rf /var/lib/apt/lists/*
+
+
+%environment
+    export LC_ALL=C
+    export PATH=$PATH:/usr/local/bin/
+    export PATH=$PATH:/usr/bin
+    export OPENMS_DATA_PATH=/usr/share/OpenMS
+    export PATH=$PATH:/usr/share/OpenMS/THIRDPARTY/Sirius
+
+# Container for DIAMetAlyzer includes OpenMS v2.9.1 + OpenMS THIRDPARTY (Sirius v5.6.3) and java for running Sirius. Maybe a little bloated with unnecessary packages but works.
