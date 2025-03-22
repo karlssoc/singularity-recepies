@@ -1,0 +1,29 @@
+Bootstrap: docker
+From: x11vnc/docker-desktop:latest
+
+%post
+    apt-get -y update
+    apt-get -y install default-jdk wget
+
+    dpkg --add-architecture i386
+
+    wget -O - https://dl.winehq.org/wine-builds/winehq.key | gpg --dearmor -o /etc/apt/keyrings/winehq-archive.key -
+
+    wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources 
+
+    apt-get -y update
+
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --install-recommends winehq-stable
+
+
+    apt-get clean
+    rm -rf /var/lib/apt/lists/*
+
+
+# docker source is https://github.com/x11vnc/x11vnc-desktop/ (ubuntu + ldex desktop + x11vnc)
+# with added java runtime enviroment & wine
+# running the sif "singularity run x11vnc-jre-wine.sif" starts x11vnc on port 5900 to 59XX
+# new vnc password is generated with each launch
+# to remotely connect with a VNC client you will need to tunnel VNC through SSH:
+# ie https://www.techrepublic.com/article/how-to-connect-to-vnc-using-ssh/
+
